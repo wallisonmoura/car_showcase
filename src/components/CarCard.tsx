@@ -6,6 +6,7 @@ import { useState } from "react"
 import { CarProps } from "@/types"
 import CustomButton from "./CustomButton"
 import { calculateCarRent } from "@/utils"
+import CarDetails from "./CarDetails"
 
 type CarCardProps = {
   car: CarProps
@@ -39,7 +40,7 @@ const CarCard = ({ car }: CarCardProps) => {
       </div>
 
       <div className="relative flex w-full mt-2">
-        <div className="flex group-hover:invisible w-full justify-between text-gray">
+        <div className="flex group-hover:invisible w-full justify-between text-grey">
           <div className="flex flex-col justify-center items-center gap-2">
             <Image src="/steering-wheel.svg" alt="Steering wheel" width={20} height={20} />
             <p className="text-[14px] ">
@@ -72,6 +73,8 @@ const CarCard = ({ car }: CarCardProps) => {
           />
         </div>
       </div>
+
+      <CarDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} car={car} />
     </div>
   )
 }
