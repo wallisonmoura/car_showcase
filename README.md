@@ -24,3 +24,9 @@ $ yarn dev
 
 ```
         
+### 🎨 Screenshots
+<p align="center">
+  <img src="public/screenshot/screenshot1.png" width='500'>
+  <img src="public/screenshot/screenshot2.png" width='500'>
+  <img src="public/screenshot/screenshot3.png" width='500'>
+</p>
