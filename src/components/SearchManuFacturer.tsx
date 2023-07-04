@@ -7,7 +7,7 @@ import { Combobox, Transition } from '@headlessui/react'
 import { SearchManuFacturerProps } from "@/types"
 import { manufacturers } from '@/constants'
 
-const SearchManuFacturer = ({manuFacturer, setManuFacturer}: SearchManuFacturerProps) => {
+const SearchManuFacturer = ({ manufacturer, setManuFacturer }: SearchManuFacturerProps) => {
   const [query, setQuery] = useState("")
 
   const filteredManufacturers =
@@ -22,7 +22,7 @@ const SearchManuFacturer = ({manuFacturer, setManuFacturer}: SearchManuFacturerP
 
   return (
     <div className='search-manufacturer'>
-      <Combobox value={manuFacturer} onChange={setManuFacturer}>
+      <Combobox value={manufacturer} onChange={setManuFacturer}>
         <div className='relative w-full'>
           <Combobox.Button className="absolute top-[14px]">
             <Image 
@@ -35,10 +35,10 @@ const SearchManuFacturer = ({manuFacturer, setManuFacturer}: SearchManuFacturerP
           </Combobox.Button>
 
           <Combobox.Input 
-            className="search-manufacturer__input"
-            placeholder='Volkswager...'
-            displayValue={(manuFacturer: string) => manuFacturer}
-            onChange={(e) => setQuery(e.target.value)}
+            className='search-manufacturer__input'
+            displayValue={(item: string) => item}
+            onChange={(event) => setQuery(event.target.value)} // Update the search query when the input changes
+            placeholder='Volkswagen...'
           />
 
           <Transition 
@@ -46,7 +46,7 @@ const SearchManuFacturer = ({manuFacturer, setManuFacturer}: SearchManuFacturerP
             leave="transition easy-in duration-100" 
             leaveFrom='opacity-100'
             leaveTo="opacity-0"
-            afterLeave={() => setQuery('')} 
+            afterLeave={() => setQuery("")} 
           >
             <Combobox.Options
               className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md
@@ -59,7 +59,7 @@ const SearchManuFacturer = ({manuFacturer, setManuFacturer}: SearchManuFacturerP
                   value={query}
                   className='search-manufacturer__option'
                >
-                 Create `{query}`
+                 Create "{query}"
                </Combobox.Option>
               ) : (
                 filteredManufacturers.map((item) => (
