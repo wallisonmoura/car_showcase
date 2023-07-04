@@ -1,19 +1,4 @@
-import { MouseEventHandler } from "react"
-
-export type CustomButtonProps = {
-  title: string
-  containerStyles?: string
-  textStyles?: string
-  btnType?: 'button' | 'submit'
-  handleClick?: MouseEventHandler<HTMLButtonElement>
-  rightIcon?: string
-  isDisabled?: boolean
-}
-
-export type SearchManuFacturerProps = {
-  manufacturer: string;
-  setManuFacturer: (manufacturer: string) => void;
-}
+import { MouseEventHandler } from "react";
 
 export type CarProps = {
   city_mpg: number;
@@ -30,6 +15,13 @@ export type CarProps = {
   year: number;
 }
 
+export type CarState = CarProps[] & { message?: string };
+
+export type SearchBarProps = {
+  setManuFacturer: (manufacturer: string) => void;
+  setModel: (model: string) => void;
+}
+
 export type FilterProps = {
   manufacturer?: string;
   year?: number;
@@ -38,8 +30,24 @@ export type FilterProps = {
   fuel?: string;
 }
 
-export type HomeProps = {
-  searchParams: FilterProps;
+export type CarCardProps = {
+  model: string;
+  make: string;
+  mpg: number;
+  transmission: string;
+  year: number;
+  drive: string;
+  cityMPG: number;
+}
+
+export type CustomButtonProps = {
+  isDisabled?: boolean;
+  btnType?: "button" | "submit";
+  containerStyles?: string;
+  textStyles?: string;
+  title: string;
+  rightIcon?: string;
+  handleClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export type OptionProps = {
@@ -47,12 +55,18 @@ export type OptionProps = {
   value: string;
 }
 
-export type CustomFilterProps  = {
-  title: string
-  options: OptionProps[]
+export type CustomFilterProps<T> = {
+  options: OptionProps[];
+  setFilter: (selected: T) => void;
 }
 
 export type ShowMoreProps = {
-  pageNumber: number
-  isNext: boolean
+  pageNumber: number;
+  isNext: boolean;
+  setLimit: (limit: number) => void;
+}
+
+export type SearchManuFacturerProps = {
+  selected: string;
+  setSelected: (selected: string) => void;
 }
